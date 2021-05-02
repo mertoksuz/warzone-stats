@@ -17,7 +17,7 @@ async function main() {
 
     bot.on('ready', () => {
         // set bot status
-        bot.user.setActivity({name: "for '!wz' commands", type: "WATCHING"});
+        bot.user.setActivity({name: "Komutlar -> '!wz'", type: "WATCHING"});
         console.info(`Logged in as ${bot.user.tag}`);
     });
     

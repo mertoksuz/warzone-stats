@@ -35,7 +35,7 @@ export default async function(message: Message) {
     }
 
     // command syntax was incorrect, post command syntax
-    await message.reply(`Invalid command syntax! See usage below.\n\`${command.usage}\``);
+    await message.reply(`Gecersiz komut girdiniz, asagidakileri takip ediniz.\n\`${command.usage}\``);
 }
 
 async function postHelp(message: Message) {
@@ -47,11 +47,11 @@ async function postHelp(message: Message) {
     }
 
     str.push(...[
-        'Parameters: `<required>`, `[optional]`',
+        'Parametreler: `<zorunlu>`, `[zorunlu degil]`',
         'modeId: `br` Battle Royale, `rmbl` Rumble, `plndr` Plunder',
         'platformId: `psn` PlayStation, `xbl` Xbox, `atvi` Activision',
-        'duration: `h` hours, `d` days, `w` weeks, `m` months. Defaults to `24h`.'
+        'Sure: `h` saat, `d` gun, `w` hafta, `m` ay. Varsayilan `24h` (1 gun).'
     ]);
     
-    await message.reply('**Warzone Stats Help**\n' + str.join('\n'));
+    await message.reply('**MasterBOT Warzone Stats Help**\n' + str.join('\n'));
 }

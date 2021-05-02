@@ -6,7 +6,7 @@ import TaskRepeater from "../utilities/task-repeater";
 
 export async function sendPlayerStats(message: Message, player: Player, duration: Duration, mode: GameMode) {
 
-    const reply = await message.reply(getEmbedTemplate(`${formatPlayername(player, message.client)}`, "Fetching stats...", player.avatarUrl));
+    const reply = await message.reply(getEmbedTemplate(`${formatPlayername(player, message.client)}`, "İstatistikler alınıyor...", player.avatarUrl));
 
     try {
         // create a taskrepeater instance
@@ -19,7 +19,7 @@ export async function sendPlayerStats(message: Message, player: Player, duration
         let embed = createStatsEmbed(player, playerStats, duration, message.client);
         await reply.edit(embed);
     } catch (e) {
-        await reply.edit(getEmbedTemplate(`${formatPlayername(player, message.client)}`, "Failed to fetch stats.\n" + e))
+        await reply.edit(getEmbedTemplate(`${formatPlayername(player, message.client)}`, "İstatistikler alınamadı!.\n" + e))
     }
 }
 
@@ -38,7 +38,7 @@ function createStatsEmbed(player: Player, stats: Stats, duration: Duration, clie
     }
 
     // proceed with formatting
-    embed.setDescription(`over the past ${duration.value} ${duration.unit}(s)`)
+    embed.setDescription(`Son ${duration.value} ${duration.unit}(s)`)
     embed.addField('Matches', stats['Matches']);
     embed.addField('Kills', stats['Kills'], true);
     embed.addField('Deaths', stats['Deaths'], true);
