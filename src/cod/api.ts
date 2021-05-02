@@ -3,7 +3,17 @@ import { Duration, GameMode, Player, Platform } from "../common/types";
 import { DAL } from "../dal/mongo-dal";
 import { request } from "../utilities/util";
 
-const modeIds = {};
+const modeIds = {
+    "br": [
+        "br_brsolo", "br_brduos", "br_brtrios", "br_brquads"
+    ],
+    "plndr": [
+        "br_dmz_plnbld"
+    ],
+    "rmbl": [
+        "br_dmz",
+    ]
+};
 
 export async function getPlayerProfile(platformId: Platform, playerId: string): Promise<Player> {
     let url = `https://api.tracker.gg/api/v2/warzone/standard/profile/${platformId}/${encodeURIComponent(playerId)}`;
@@ -22,7 +32,7 @@ export async function getRecentMatches(player: Player, duration: Duration, mode:
     let next = 'null';
 
     // check if modeIds loaded, else load from db
-    if (!modeIds[mode]) modeIds[mode] = await DAL.getModeIds(mode);
+    //if (!modeIds[mode]) modeIds[mode] = await DAL.getModeIds(mode);
 
     // fetch all matches during specified duration
     while (true) {

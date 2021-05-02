@@ -59,8 +59,13 @@ class MongoDAL {
     // helpers
 
     async getModeIds(mode: GameMode): Promise<Array<string>> {
-        const { modeIds } = await this.db.collection('modes').findOne({ mode });
-        return modeIds;
+        const newModes = [];
+        const result = await this.db.collection('modes').find({}).forEach(m => {
+            if (mode == 'br' && m.br) {
+                newModes.push(m.br.modeIds);     
+            }
+        });
+        return newModes[0];
     }
 
     // scheduling related
@@ -86,8 +91,8 @@ class MongoDAL {
     }
 
     async init() {
-        const client = await MongoClient.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
-        this.db = client.db(process.env.MONGO_DBNAME);
+        const client = await MongoClient.connect('mongodb://127.0.0.1:27017', { useNewUrlParser: true, useUnifiedTopology: true });
+        this.db = client.db('warzone');
         console.info("DB connected!");
     }
 
