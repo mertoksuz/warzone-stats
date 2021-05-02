@@ -8,7 +8,7 @@ async function main() {
 
     // init bot
     const bot = new Client();
-    bot.login('NzkxNjA1OTczMjYwNDM1NDY3.X-Rmgw.XTFQrMDz75Q7soRq2KZ27t8-esc');
+    bot.login(process.env.TOKEN);
 
     // init pre-reqs
     await DAL.init();
