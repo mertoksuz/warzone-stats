@@ -6,7 +6,7 @@ import { DAL } from './dal/mongo-dal';
 
 async function main() {
 
-    // init bot
+    // init master bot
     const bot = new Client();
     bot.login(process.env.TOKEN);
 
