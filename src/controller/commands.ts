@@ -9,7 +9,8 @@ import { Scheduler } from "../utilities/scheduler";
 
 export async function postStats(message: Message, args: CommandArgs) {
     
-    const { modeId, playerId, platformId, duration } = args;
+    const { playerId, platformId, duration } = args;
+    const modeId = 'br';
 
     const players: Array<Player> = [];
 

@@ -91,8 +91,22 @@ export function formatPlayername(player: Player, client: Client = null) {
             return `<:${platformEmoji.name}:${platformEmoji.id}> **${playerId}**`;
         }
     }
+
+    let platformName = '';
+
+    if (platformId == 'atvi') {
+        platformName = 'Activison';
+    }
+    
+    if (platformId == 'psn') {
+        platformName = 'PSN';
+    }
+
+    if (platformId == 'xbl') {
+        platformName = 'XBox';
+    }
     // else send platformId as text
-    return `**${playerId}** *(${platformId})*`
+    return `**${playerId}** *(${platformName})*`
 }
 
 function formatThumbnail(thumbnail: string) {

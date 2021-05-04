@@ -47,11 +47,8 @@ async function postHelp(message: Message) {
     }
 
     str.push(...[
-        'Parametreler: `<zorunlu>`, `[zorunlu degil]`',
-        'modeId: `br` Battle Royale, `rmbl` Rumble, `plndr` Plunder',
         'platformId: `psn` PlayStation, `xbl` Xbox, `atvi` Activision',
-        'Sure: `h` saat, `d` gun, `w` hafta, `m` ay. Varsayilan `24h` (1 gun).'
     ]);
     
-    await message.reply('**MasterBOT Warzone Stats Help**\n' + str.join('\n'));
+    await message.reply('**MasterBOT Warzone Stats**\n' + str.join('\n'));
 }

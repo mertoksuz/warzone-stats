@@ -16,7 +16,7 @@ export async function sendPlayerStats(message: Message, player: Player, duration
         let playerStats: Stats = await taskRepeater.run();
 
         // create a stats embed and send
-        let embed = createStatsEmbed(player, playerStats, duration, message.client);
+        let embed = createStatsEmbed(player, playerStats, duration, mode, message.client);
         await reply.edit(embed);
     } catch (e) {
         await reply.edit(getEmbedTemplate(`${formatPlayername(player, message.client)}`, "İstatistikler alınamadı!.\n" + e))
@@ -28,7 +28,7 @@ async function fetchTask(player: Player, duration: Duration, mode: GameMode) {
     return calculateStats(matches);
 }
 
-function createStatsEmbed(player: Player, stats: Stats, duration: Duration, client: Client): MessageEmbed {
+function createStatsEmbed(player: Player, stats: Stats, duration: Duration, mode: GameMode, client: Client): MessageEmbed {
     let embed = getEmbedTemplate(`${formatPlayername(player, client)}`, `Stats for the past ${duration.value} ${duration.unit}(s)`, player.avatarUrl)
 
     // no matches played, early return
@@ -38,7 +38,7 @@ function createStatsEmbed(player: Player, stats: Stats, duration: Duration, clie
     }
 
     // proceed with formatting
-    embed.setDescription(`Son ${duration.value} ${duration.unit}(s)`)
+    embed.setDescription(`Warzone Battle Royale Istatistikleri`)
     embed.addField('Matches', stats['Matches']);
     embed.addField('Kills', stats['Kills'], true);
     embed.addField('Deaths', stats['Deaths'], true);

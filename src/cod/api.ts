@@ -4,15 +4,8 @@ import { DAL } from "../dal/mongo-dal";
 import { request } from "../utilities/util";
 
 const modeIds = {
-    "br": [
-        "br_brsolo", "br_brduos", "br_brtrios", "br_brquads"
-    ],
-    "plndr": [
-        "br_dmz_plnbld"
-    ],
-    "rmbl": [
-        "br_dmz",
-    ]
+    "br": "br",
+    "plndr": "dmz"
 };
 
 export async function getPlayerProfile(platformId: Platform, playerId: string): Promise<Player> {
@@ -43,7 +36,7 @@ export async function getRecentMatches(player: Player, duration: Duration, mode:
     let segments = res.data.segments;
 
     // filter out matches of other types
-    segments = segments.filter(x => mode == x.attributes.mode);
+    segments = segments.filter(x => modeIds[mode] == x.attributes.mode);
     
     return segments[0];
 }
