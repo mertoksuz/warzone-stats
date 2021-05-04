@@ -95,7 +95,7 @@ export function formatPlayername(player: Player, client: Client = null) {
     let platformName = '';
 
     if (platformId == 'atvi') {
-        platformName = 'Activison';
+        platformName = 'Activision';
     }
     
     if (platformId == 'psn') {
