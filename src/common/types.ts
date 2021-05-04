@@ -38,13 +38,9 @@ export type Stats = {
     'Matches': number,
     'Kills': number,
     'Deaths': number,
+    'Downs': number,
     'Time Played': string,
-    'Avg. Game Time': string,
-    'Avg. Team Placement': number,
-    'Headshots': number,
-    'Executions': number,
-    'Vehicles Destroyed': number,
-    'Team Wipes': number
+    'Wins': number,
 };
 
 export type Schedule = {

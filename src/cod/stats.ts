@@ -78,23 +78,18 @@ function sum(stats, field): number {
     }
 }
 
-function calculateStats(matches): Stats {
-    let stats = matches.map(x => x.segments[0].stats);
+function calculateStats(segment): Stats {
+    let stats = segment.stats;
     let statValues:Stats = {
-        'Matches': stats.length,
-        'Kills': sum(stats, 'kills'),
-        'Deaths': sum(stats, 'deaths'),
-        'Time Played': formatDuration(sum(stats, 'timePlayed')),
-        'Avg. Game Time': formatDuration(sum(stats, 'timePlayed') / stats.length),
-        'Avg. Team Placement': parseInt(`${sum(stats, 'teamPlacement') / Math.max(matches.length, 1)}`),
-        'Headshots': sum(stats, 'headshots'),
-        'Executions': sum(stats, 'executions'),
-        'Vehicles Destroyed': sum(stats, 'objectiveDestroyedVehicleLight') + sum(stats, 'objectiveDestroyedVehicleMedium') + sum(stats, 'objectiveDestroyedVehicleHeavy'),
-        'Team Wipes': sum(stats, 'objectiveTeamWiped')
+        'Matches': stats.gamesPlayed.value,
+        'Kills': stats.kills.value,
+        'Deaths': stats.deaths.value,
+        'Downs': stats.downs.value,
+        'Time Played': formatDuration(stats.timePlayed.value),
+        'Wins': stats.wins.value,
     }
 
-    statValues['K/D'] = statValues['Kills'] / Math.max(statValues['Deaths'], 1);
-    statValues['K/D'] = statValues['K/D'].toFixed(2);
+    statValues['K/D'] = stats.kdRatio.value;
 
     return statValues;
 }
